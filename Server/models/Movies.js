@@ -20,6 +20,10 @@ const  moviesSchema = new mongoose.Schema({
     releaseYear:{
         type: String,
         required: true
+    },
+    watched:{
+        type: Boolean,
+        default: false
     }
 })
 

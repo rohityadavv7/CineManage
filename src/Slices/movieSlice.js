@@ -4,7 +4,7 @@ const initialState={
     NowPlaying:[],
     allMovies:[],
     MoviesByGenre:{},
-    TopMovies:{}
+    watchlist:[]
 }
 
 const movieSlice = createSlice({
@@ -17,8 +17,8 @@ const movieSlice = createSlice({
         setMoviesByGenre(state,value){
             state.MoviesByGenre = value.payload
         },
-        setTopMovies(state,value){
-            state.TopMovies = value.payload
+        setWatchlist(state,value){
+            state.watchlist = value.payload
         },
         setNowPlaying(state,value){
             state.NowPlaying = value.payload
@@ -26,5 +26,5 @@ const movieSlice = createSlice({
     }
 })
 
-export const {setNowPlaying, setAllMovies, setMoviesByGenre, setTopMovies } = movieSlice.actions
+export const {setNowPlaying, setAllMovies, setMoviesByGenre, setWatchlist } = movieSlice.actions
 export default movieSlice.reducer

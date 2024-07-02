@@ -5,11 +5,15 @@ import { setTheme } from '../Slices/themeSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from './Designs/Button';
+import { useNavigate } from 'react-router-dom';
+import { setToken,setUser } from '../Slices/authSlice';
 
 function Navbar() {
 
     const {theme} = useSelector(state => state.theme);
+    const {token} = useSelector((state) => state.auth);
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     useEffect(() => {
             dispatch(setTheme(theme));
             localStorage.setItem("theme",theme);
@@ -30,6 +34,17 @@ function Navbar() {
             console.log(theme);
         }
     }
+
+    function logout(e){
+            e.preventDefault();
+           console.log("logout")
+            dispatch(setToken(null))
+            dispatch(setUser(null))
+            localStorage.removeItem("token")
+            localStorage.removeItem("user")
+            navigate("/")
+        
+    }
   return (
    <div className='navbar flex flex-col'>
         <div className="navbar bg-base-100">
@@ -45,18 +60,31 @@ function Navbar() {
                     <div className="drawer-side z-10">
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-10 flex
-                        font-normal flex-col space-y-4 text-2xl">
+                        font-normal flex-col space-y-4 text-2xl rounded-md ">
                         {/* Sidebar content here */}
-                        <li>
-                            <Link to="/Movies">
-                                <a>Movies</a>
-                            </Link>
+                       
+                        <li className=' rounded-lg'>
+                        
+                                <a className='rounded-lg p-4' onClick={() => {
+                                        if(token === null){
+                                    
+                                            return navigate("/login")
+                                        }
+                                        else{
+                                            return navigate("/watchlist")
+                                        }
+                                }}>Your Watchlist</a>
+                            
                         </li>
-                        <li><a>Your List</a></li>
                         <div className="divider"></div>
-                        <li><a>Add a Movie</a></li>
+                        <li>
+                            <a className='rounded-lg p-4'>Add a Movie</a>
+                        </li>
                         <div className="divider"></div>
-                        <li><a>Deleted Movies</a></li>
+
+                        <li>
+                            <a className='rounded-lg p-4'>Deleted Movies</a>
+                        </li>
                         <div className="divider"></div>
                         </ul>
                     </div>
@@ -70,11 +98,23 @@ function Navbar() {
             <div className="navbar-end flex gap-4">
                 
                 <div>
-                    <Button title={"Sign In"}/>
+                    {
+                        token === null?
+                        (<Link to="/login">
+                            <Button title={"Sign In"}/>
+                        </Link>)
+                    :
+                        (<button onClick={logout}>
+                            
+                                <Button title={"logout"}/>
+
+                        </button>)
+                        
+                    }
                 </div>
 
                 <label class="inline-flex items-center relative">
-                    <input class="peer hidden" id="toggle" type="checkbox"  onClick={handleToggle}/>
+                    <input class="peer hidden checked" id="toggle" type="checkbox"  onClick={handleToggle}/>
                     <div
                         class="relative w-[110px] h-[50px] bg-white peer-checked:bg-richblack-500 rounded-full after:absolute after:content-[''] after:w-[40px] after:h-[40px] after:bg-gradient-to-r from-yellow-200 to-yellow-400 peer-checked:after:from-richblack-900 peer-checked:after:to-richblack-900 after:rounded-full after:top-[5px] after:left-[5px] active:after:w-[50px] peer-checked:after:left-[105px] peer-checked:after:translate-x-[-100%] shadow-sm duration-300 after:duration-300 after:shadow-md"
                     ></div>

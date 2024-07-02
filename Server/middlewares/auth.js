@@ -5,9 +5,9 @@ exports.auth = async (req, res, next) => {
     console.log("in Auth")
     try{
         //extract token
-        const token = req.cookies.token 
-                        || req.body.token 
-                        || req.header("Authorisation").replace("Bearer ", "");
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1]; 
+        console.log("Token -> ",token);           
 
         //if token missing, then return response
         if(!token) {

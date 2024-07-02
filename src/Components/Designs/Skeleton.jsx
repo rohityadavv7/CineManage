@@ -2,16 +2,15 @@ import React from 'react'
 
 function Skeleton() {
   return (
-    <div
-        class="flex flex-col bg-neutral-300 w-56 h-64 animate-pulse rounded-xl p-4 gap-4"
-        >
-        <div class="bg-neutral-400/50 w-full h-32 animate-pulse rounded-md"></div>
-        <div class="flex flex-col gap-2">
-            <div class="bg-neutral-400/50 w-full h-4 animate-pulse rounded-md"></div>
-            <div class="bg-neutral-400/50 w-4/5 h-4 animate-pulse rounded-md"></div>
-            <div class="bg-neutral-400/50 w-full h-4 animate-pulse rounded-md"></div>
-            <div class="bg-neutral-400/50 w-2/4 h-4 animate-pulse rounded-md"></div>
-        </div>
+    <div class="animate-pulse flex flex-col items-center gap-4 w-60">
+      <div>
+        <div class="w-48 h-6 bg-slate-400 rounded-md"></div>
+        <div class="w-28 h-4 bg-slate-400 mx-auto mt-3 rounded-md"></div>
+      </div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-full rounded-md"></div>
+      <div class="h-7 bg-slate-400 w-1/2 rounded-md"></div>
     </div>
 
   )

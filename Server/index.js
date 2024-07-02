@@ -15,8 +15,10 @@ app.use(cors({
 
 //routes
 const userRoutes = require("./routes/userRoutes")
+const movieRoutes = require("./routes/moviesRoutes")
 
 app.use("/auth", userRoutes);
+app.use("/movies",movieRoutes)
 
 //db connection
 dbConnection()

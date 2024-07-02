@@ -18,8 +18,10 @@ function Carousel() {
 
   return (
     <div className="carousel relative w-full z-0 h-[600px] rounded-lg">
-        <div id="slide1" className="carousel-item relative w-full -z-0 overflow-hidden">
-            <div>
+        <div id="slide1" className="carousel-item  glass relative 
+        hover:bg-gradient-to-r from-NewBlue to-bl  transition-all duration-500
+        w-full -z-0 overflow-hidden">
+            <div className=''>
                 <img
                 src={img5}
                 className="w-full  object-cover  " />
