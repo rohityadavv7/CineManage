@@ -1,0 +1,2 @@
+# CineManage
+Movie Management Application
