@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { moviesAPIS } from '../../services/apis';
+import toast from 'react-hot-toast';
 
 function MovieCard({description,title,rating, image,releaseYear}) {
 
@@ -16,9 +17,11 @@ function MovieCard({description,title,rating, image,releaseYear}) {
                             }})
 
             console.log("RESPONSE FROM ADD_TO_WATCHLIST_API...", response.data);
+            toast.success("Movie added to watchlist!")
 
         }catch(error){
             console.log("ERROR IN ADDING TO WATCHLIST...",error )
+            toast.error("error adding to watchlist")
         }
     }
 

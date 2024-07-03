@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true ,REACT_APP_BASE_URL:"http://localhost:4000"},
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',

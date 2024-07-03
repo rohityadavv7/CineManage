@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { moviesAPIS } from '../../services/apis'
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 function CategoryCard({title, imageUrl,description, releaseYear,rating,category}) {
     const {ADD_TO_WATCHLIST_API} = moviesAPIS;
@@ -16,9 +17,11 @@ function CategoryCard({title, imageUrl,description, releaseYear,rating,category}
                             }})
 
             console.log("RESPONSE FROM ADD_TO_WATCHLIST_API...", response.data);
+            toast.success("Added to watchlist")
 
         }catch(error){
             console.log("ERROR IN ADDING TO WATCHLIST...",error )
+            toast.error("Failed to add to watchlist")
         }
     }
   return (

@@ -3,6 +3,7 @@ import { moviesAPIS } from '../../services/apis'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function EditMovieForm() {
     const {EDIT_MOVIE_API} = moviesAPIS
@@ -19,7 +20,7 @@ function EditMovieForm() {
             const response = await axios.post(EDIT_MOVIE_API, {title,description,rating, releaseYear})
 
             console.log("RESPONSE FROM EDIT MOVIE...", response.data);
-
+            toast.success("Movie edited!")
             navigate("/watchlist")
 
 

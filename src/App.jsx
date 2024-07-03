@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Navbar from './Components/Navbar'
 import axios from 'axios'
 import { Routes, Route } from 'react-router-dom'
-import AllMovies from './Components/Movies/AllMovies'
 import Movies from './Components/Movies/Movies'
-import Carousel from './Components/Designs/Carousel'
 import LoginForm from './Components/Forms/LoginForm'
 import Home from './Components/Home'
 import WatchList from './Components/Movies/WatchList'
@@ -15,6 +11,7 @@ import MovieDetailsPage from './Components/Movies/MovieDetailsPage'
 import EditDetails from './Components/Movies/EditDetails'
 import SignupForm from './Components/Forms/SignupForm'
 import AddMovieForm from './Components/Forms/AddMovieForm'
+
 import WatchedMovies from './Components/Movies/WatchedMovies'
 
 function App() {

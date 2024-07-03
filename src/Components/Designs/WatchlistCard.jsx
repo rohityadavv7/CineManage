@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { moviesAPIS } from '../../services/apis';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 function WatchlistCard({imageUrl, title, description, rating, watched, releasedYear,id}) {
     console.log(title+"->"+watched);
@@ -31,6 +32,7 @@ function WatchlistCard({imageUrl, title, description, rating, watched, releasedY
         localStorage.setItem("movieDetails", JSON.stringify(movie));
 
         dispatch(setMovieDetails(movie));
+        // toast.success("movie edited successfully");
         navigate("/moviedetails")
     }
 
@@ -40,10 +42,12 @@ function WatchlistCard({imageUrl, title, description, rating, watched, releasedY
         try{
             const response =  await axios.post(UPDATE_WATCHED_API,{title,email})
             console.log("REPONSE FROM UPDATE WATCHED...", response.data);
+            toast.success("set watched")
             setWatchedMovie(true)
     
         }catch(error){
             console.log("ERROR IN SETTING WATCHED...",error);
+            toast.error("error setting watched")
         }
     }
 
@@ -56,8 +60,10 @@ function WatchlistCard({imageUrl, title, description, rating, watched, releasedY
             console.log(email)
            const response = await axios.delete(`http://localhost:4000/movies/deletefromwatchlist/${email}/${id}`)
             console.log("RESPONSE FROM DELETE...", response.data);
+            toast.success("deleted successfully!")
         }catch(error){
             console.log("ERROR IN DELETING MOVIE...",error);
+            toast.error("error deleting movie")
         }
     }
 

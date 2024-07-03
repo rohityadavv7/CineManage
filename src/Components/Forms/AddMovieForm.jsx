@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { moviesAPIS } from '../../services/apis';
 import { useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 
 function AddMovieForm() {
@@ -17,12 +18,15 @@ function AddMovieForm() {
         const releaseYear = data.releaseYear
         console.log("data-> ",data)
         try{
+
             console.log("Printing-> ",title,description,rating,releaseYear)
             const response = await axios.post(ADD_MOVIE_API, {title,description,rating,imageUrl:"abcd",releaseYear},{headers: {
                                     'Authorization': `Bearer ${token}` // Send the token in the Authorization header
                             }})
 
-                        console.log("RESPONSE IN ADD...", response.data);
+            console.log("RESPONSE IN ADD...", response.data);
+            toast.success("Movie Added!")
+
         }catch(error){
             console.log("ERROR IN ADDING MOVIE...", error);
         }

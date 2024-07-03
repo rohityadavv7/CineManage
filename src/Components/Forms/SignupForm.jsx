@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { userAPIS } from '../../services/apis';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function SignupForm() {
     const  {SIGNUP_API} = userAPIS;
@@ -18,9 +19,11 @@ function SignupForm() {
         try{
             const response = await axios.post(SIGNUP_API, {username,email,password})
             console.log("REPONSE FROM SIGNUP...", response.data);
+            toast.success("signed up successfully!")
             navigate("/login")
         }catch(error){
             console.log("ERROR IN SIGNUP...", error);
+            toast.error("Signup failed")
         }
     } 
 

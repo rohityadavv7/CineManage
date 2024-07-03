@@ -7,6 +7,7 @@ import { setWatchlist } from '../../Slices/movieSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function LoginForm() {
 
@@ -33,10 +34,12 @@ function LoginForm() {
 
             localStorage.setItem("token", JSON.stringify(response.data.token))
             localStorage.setItem("user", JSON.stringify(response.data.user))
+            toast.success("Logged in successfully!")
             navigate("/");
 
         }catch(error){
             console.log("ERROR IN LOGIN...", error);
+            toast.error("Login failed!")
         }
     }
 
