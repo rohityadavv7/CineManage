@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { moviesAPIS } from '../../services/apis';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 function MovieCard({description,title,rating, image,releaseYear}) {
 
