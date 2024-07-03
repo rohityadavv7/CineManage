@@ -6,7 +6,7 @@ exports.auth = async (req, res, next) => {
     try{
         //extract token
         const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1]; 
+        const token = authHeader && authHeader.split(' ')[1] 
         console.log("Token -> ",token);           
 
         //if token missing, then return response

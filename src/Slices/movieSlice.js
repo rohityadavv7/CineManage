@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     NowPlaying:[],
     allMovies:[],
-    MoviesByGenre:{},
-    watchlist:[]
+    UpcomingMovies:{},
+    watchlist:[],
+    movieDetails:{},
+    watchedMovies:[],
 }
 
 const movieSlice = createSlice({
@@ -14,17 +16,23 @@ const movieSlice = createSlice({
         setAllMovies(state,value){
             state.allMovies = value.payload
         },
-        setMoviesByGenre(state,value){
-            state.MoviesByGenre = value.payload
+        setUpcomingMovies(state,value){
+            state.UpcomingMovies = value.payload
         },
         setWatchlist(state,value){
             state.watchlist = value.payload
         },
         setNowPlaying(state,value){
             state.NowPlaying = value.payload
-        }
+        },
+        setMovieDetails(state,value){
+            state.movieDetails = value.payload
+        },
+        setWatchedMovies(state,value){
+            state.watchedMovies = value.payload
+        },
     }
 })
 
-export const {setNowPlaying, setAllMovies, setMoviesByGenre, setWatchlist } = movieSlice.actions
+export const {setNowPlaying,setWatchedMovies, setAllMovies, setUpcomingMovies, setWatchlist ,setMovieDetails} = movieSlice.actions
 export default movieSlice.reducer

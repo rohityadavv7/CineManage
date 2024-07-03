@@ -6,6 +6,7 @@ import { setToken, setUser } from '../../Slices/authSlice';
 import { setWatchlist } from '../../Slices/movieSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
 
@@ -40,75 +41,58 @@ function LoginForm() {
     }
 
   return (
-    <div
-        
-        class="max-w-md w-full bg-gradient-to-r from-blue-800 to-purple-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8"
-        >
-        <h2
-            class="text-center text-4xl font-extrabold text-white animation: appear 2s ease-out;"
-        >
-            Welcome
-        </h2>
-        <p class="text-center text-gray-200 animation: appear 3s ease-out">
-            Sign in to your account
-        </p>
-        <form onSubmit={handleSubmit(signinData)} class="space-y-6">
-            <div class="relative">
-            <input
-                placeholder="john@example.com"
-                class="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500"
-                required=""
-                {...register("email")}
-                name="email"
-                type="email"
-            />
-            <label
-                class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm"
-                for="email"
-                >Email address
-            </label>
+      <div className="flex flex-col items-center justify-center shadow drop-shadow-lg   dark">
+            <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-2">
+                    <h2 class="text-2xl font-bold text-gray-200 mb-4">Welcome, Login to your account</h2>
+
+                    <form class="flex flex-col" onSubmit={handleSubmit(signinData)}>
+                        
+
+                        <input placeholder="email" class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 
+                            focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition 
+                            ease-in-out duration-150" type="email"
+                            {...register("email")}/>
+                        
+                        <input placeholder="password" class="bg-gray-700 text-gray-200 border-0 rounded-md 
+                            p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500
+                             transition ease-in-out duration-150"
+                              type="password"
+                              {...register("password")}/>
+                        {/*<input placeholder="LinkedIn Profile URL" class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" type="text"/> */}
+                        {/* <input placeholder="Resume" class="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" type="file"/> */}
+
+                        <div className='font-normal p-2 flex gap-4'>
+                            <p>Don't have and account?</p>
+                            <button className='rounded-md px-2 py-1 bg-NewBlue' onClick={() => navigate("/signup")}>Signup</button>
+                        </div>
+                        <button class="bg-gradient-to-r from-indigo-500 to-blue-500
+                            text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600
+                            hover:to-blue-600 transition ease-in-out duration-150" type="submit">
+                            Login
+                        </button>
+                    </form>
             </div>
-            <div class="relative">
-            <input
-                placeholder="Password"
-                class="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-purple-500"
-                required=""
-                {...register("password")}
-                name="password"
-                type="password"
-            />
-            <label
-                class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm"
-                for="password"
-                >Password</label
-            >
-            </div>
-            <div class="flex items-center justify-between">
-            <label class="flex items-center text-sm text-gray-200">
-                <input
-                class="form-checkbox h-4 w-4 text-purple-600 bg-gray-800 border-gray-300 rounded"
-                type="checkbox"
-                />
-                <span class="ml-2">Remember me</span>
-            </label>
-            <a class="text-sm text-purple-200 hover:underline" href="#"
-                >Forgot your password?</a
-            >
-            </div>
-            <button 
-                class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
-                type="submit"
-                >
-                Sign In
-            </button>
-        </form>
-        <div class="text-center text-gray-300">
-            Don't have an account?
-            <a class="text-purple-300 hover:underline" href="#">Sign up</a>
         </div>
-    </div>
 
   )
 }
 
 export default LoginForm
+
+{/* 
+<div class="w-80 rounded-2xl bg-slate-900">
+  <div class="flex flex-col gap-2 p-8">
+    <p class="text-center text-3xl text-gray-300 mb-4">Register</p>
+    <input class="bg-slate-900 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Email">
+    <input class="bg-slate-900 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Password">
+    <input class="bg-slate-900 w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Confirm password">
+    <label class="flex cursor-pointer items-center justify-between p-1 text-slate-400">
+      Accept terms of use
+      <div class="relative inline-block">
+        <input class="peer h-6 w-12 cursor-pointer appearance-none rounded-full border border-gray-300 bg-gary-400 checked:border-green-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2" type="checkbox">
+        <span class="pointer-events-none absolute left-1 top-1 block h-4 w-4 rounded-full bg-slate-600 transition-all duration-200 peer-checked:left-7 peer-checked:bg-green-300"></span>
+      </div>
+    </label>
+    <button class="inline-block cursor-pointer rounded-md bg-gray-700 px-4 py-3.5 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95">Register</button>
+  </div>
+</div> */}

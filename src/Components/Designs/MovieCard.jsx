@@ -1,6 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { moviesAPIS } from '../../services/apis';
 
-function MovieCard({description,title,rating, image}) {
+function MovieCard({description,title,rating, image,releaseYear}) {
+
+    const{ADD_TO_WATCHLIST_API} = moviesAPIS
+
+    const {token} = useSelector((state) => state.auth);
+
+    async function addToWatchlist(){
+        console.log("in")
+        try{
+            const response = await axios.post(ADD_TO_WATCHLIST_API, {title, description,releaseYear,imageUrl, rating}, {headers: {
+                                    'Authorization': `Bearer ${token}` // Send the token in the Authorization header
+                            }})
+
+            console.log("RESPONSE FROM ADD_TO_WATCHLIST_API...", response.data);
+
+        }catch(error){
+            console.log("ERROR IN ADDING TO WATCHLIST...",error )
+        }
+    }
+
   return (
     <div
             className="card shadow-[0px_4px_16px_px_#367E08] h-[400px] w-[280px] group gap-[0.5em] rounded-[1.5em] 
@@ -39,7 +60,7 @@ function MovieCard({description,title,rating, image}) {
                                     
                     <div role="alert" class="max-w-[300px] p-2 bg-indigo-400 rounded-full items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex">
                         <span class="flex rounded-full bg-richblue-500 text-white font-normal uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
-                        <span class="font-semibold mr-2 text-left flex-auto">Add to Watchlist?</span>
+                        <button onClick={addToWatchlist}><span class="font-semibold mr-2 text-left flex-auto">Add to Watchlist?</span></button>
                         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="fill-current opacity-75 h-4 w-4"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"></path></svg>
                     </div>
 

@@ -11,6 +11,11 @@ import Carousel from './Components/Designs/Carousel'
 import LoginForm from './Components/Forms/LoginForm'
 import Home from './Components/Home'
 import WatchList from './Components/Movies/WatchList'
+import MovieDetailsPage from './Components/Movies/MovieDetailsPage'
+import EditDetails from './Components/Movies/EditDetails'
+import SignupForm from './Components/Forms/SignupForm'
+import AddMovieForm from './Components/Forms/AddMovieForm'
+import WatchedMovies from './Components/Movies/WatchedMovies'
 
 function App() {
 
@@ -21,10 +26,16 @@ function App() {
       
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/signup' element={<SignupForm/>}/>
+        <Route path='/login' element={<LoginForm/>}/>
         <Route path='/Movies' element={<Movies/>}/>
         <Route path='/login' element={<LoginForm/>}/>
         <Route path='/allmovies' element={<Movies/>}/>
         <Route path="/watchlist" element={<WatchList/>}/>
+        <Route path='/moviedetails' element={<MovieDetailsPage/>}/>
+        <Route path='/editdetails' element={<EditDetails/>}/>
+        <Route path='/addMovie' element={<AddMovieForm/>}/>
+        <Route path='/watchedmovies' element={<WatchedMovies/>}/>
       </Routes>
     </div>
   )

@@ -78,12 +78,16 @@ function Navbar() {
                         </li>
                         <div className="divider"></div>
                         <li>
-                            <a className='rounded-lg p-4'>Add a Movie</a>
+                            <Link to="/allmovies">
+                                <a className='rounded-lg p-4'>Add a Movie</a>
+                            </Link>
                         </li>
                         <div className="divider"></div>
 
                         <li>
-                            <a className='rounded-lg p-4'>Deleted Movies</a>
+                             <Link to="/watchedmovies">
+                                <a className='rounded-lg p-4'>Watched</a>
+                            </Link>
                         </li>
                         <div className="divider"></div>
                         </ul>

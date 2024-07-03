@@ -30,11 +30,8 @@ function AllMovies() {
             const response = await axios.get(url)
             console.log("movies",response.data.results);
             var fetchedMovies = response.data.results;
-            var newList = [];
-            for(let i = 0; i < fetchedMovies.length-10; i++){
-                newList.push(fetchedMovies[i])
-            }
-            dispatch(setAllMovies(newList));
+            
+            dispatch(setAllMovies(fetchedMovies));
 
             console.log("movies setted ->",allMovies)
         }catch(error){
@@ -62,7 +59,7 @@ function AllMovies() {
                             
                                 <div>
                                     <MovieCard title={movie.title} description={movie.overview} 
-                                    rating={movie.vote_average} image={movie.poster_path}/>
+                                    rating={movie.vote_average} image={movie.poster_path} releaseYear={movie.release_date}/>
                                 </div>
                         </div>
                     )

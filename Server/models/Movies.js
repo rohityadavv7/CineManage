@@ -11,9 +11,9 @@ const  moviesSchema = new mongoose.Schema({
     },
     imageUrl:{
         type: String,
-        required: true
+        default:"abcd"
     },
-    genre:{
+    rating:{
         type: String,
         required: true
     },

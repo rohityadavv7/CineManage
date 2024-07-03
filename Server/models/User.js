@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Movies',
         default:[]
+    }],
+    moviesWatched:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movies',
+        default:[]
     }]
 },{timestamps: true})
 
