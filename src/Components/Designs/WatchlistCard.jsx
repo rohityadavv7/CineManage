@@ -92,7 +92,7 @@ function WatchlistCard({imageUrl, title, description, rating, watched, releasedY
                                 setWatched(),
                                 setWatchedMovie((prev)=> !prev)
                             }}>
-                                {watched===true?"watched":"Not Watche"}
+                                {watchedmovie === true?"Watched":"Not watched"}
                             </button>
                         </div>
                         <div className="divider divider-horizontal"></div>
